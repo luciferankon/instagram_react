@@ -16,10 +16,14 @@ class UserProfile extends React.Component {
     };
   }
 
-  componentDidMount(){
-    fetch('/profile/data')
+  componentDidMount() {
+    fetch("/profile/name")
+      .then(res => res.json())
+      .then(name => this.setState(name));
+
+    fetch('/profile/follower')
     .then(res => res.json())
-    .then(data => this.setState(data))
+    .then(follower => this.setState(follower));
   }
 
   render() {
