@@ -21,17 +21,17 @@ class UserProfile extends React.Component {
       .then(res => res.json())
       .then(name => this.setState(name));
 
-    fetch('/profile/follower')
-    .then(res => res.json())
-    .then(follower => this.setState(follower));
-    
-    fetch('/profile/followee')
-    .then(res => res.json())
-    .then(followee => this.setState(followee));
+    fetch("/profile/follower")
+      .then(res => res.json())
+      .then(follower => this.setState(follower));
 
-    fetch('/profile/post')
-    .then(res => res.json())
-    .then(postCount => this.setState(postCount));
+    fetch("/profile/followee")
+      .then(res => res.json())
+      .then(followee => this.setState(followee));
+
+    fetch("/profile/post")
+      .then(res => res.json())
+      .then(postCount => this.setState(postCount));
   }
 
   render() {
