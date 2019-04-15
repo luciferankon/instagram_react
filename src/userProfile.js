@@ -28,6 +28,10 @@ class UserProfile extends React.Component {
     fetch('/profile/followee')
     .then(res => res.json())
     .then(followee => this.setState(followee));
+
+    fetch('/profile/post')
+    .then(res => res.json())
+    .then(postCount => this.setState(postCount));
   }
 
   render() {
