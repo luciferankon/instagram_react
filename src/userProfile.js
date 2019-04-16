@@ -17,11 +17,19 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/profile/name")
-      .then(res => res.json())
-      .then(name => this.setState(name));
-
-    fetch("/profile/follower")
+    fetch("/profile/name", {
+      method: "POST",
+      headers: {"Content-Type": "text/plain"},
+      body: this.props.name
+    })
+    .then(res => res.json())
+    .then(name => this.setState(name));
+    
+    fetch("/profile/follower",{
+      method: "POST",
+      headers: {"Content-Type": "text/plain"},
+      body: this.props.name
+    })
       .then(res => res.json())
       .then(follower => this.setState(follower));
 
@@ -32,8 +40,8 @@ class UserProfile extends React.Component {
     fetch("/profile/post")
       .then(res => res.json())
       .then(postCount => this.setState(postCount));
-    
-    fetch('/profile/posts')
+
+    fetch("/profile/posts")
       .then(res => res.json())
       .then(posts => this.setState(posts));
   }
