@@ -30,20 +30,23 @@ class UserProfile extends React.Component {
       headers: {"Content-Type": "text/plain"},
       body: this.props.name
     })
+    .then(res => res.json())
+    .then(follower => this.setState(follower));
+    
+    fetch("/profile/followee",{
+      method: "POST",
+      headers: {"Content-Type": "text/plain"},
+      body: this.props.name
+    })
       .then(res => res.json())
-      .then(follower => this.setState(follower));
+      .then(followee => {this.setState(followee); console.log(this.state)});
+    // fetch("/profile/post")
+    //   .then(res => res.json())
+    //   .then(postCount => this.setState(postCount));
 
-    fetch("/profile/followee")
-      .then(res => res.json())
-      .then(followee => this.setState(followee));
-
-    fetch("/profile/post")
-      .then(res => res.json())
-      .then(postCount => this.setState(postCount));
-
-    fetch("/profile/posts")
-      .then(res => res.json())
-      .then(posts => this.setState(posts));
+    // fetch("/profile/posts")
+    //   .then(res => res.json())
+    //   .then(posts => this.setState(posts));
   }
 
   render() {
