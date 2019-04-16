@@ -38,15 +38,24 @@ class UserProfile extends React.Component {
       headers: {"Content-Type": "text/plain"},
       body: this.props.name
     })
+    .then(res => res.json())
+    .then(followee => this.setState(followee));
+    
+    fetch("/profile/post",{
+      method: "POST",
+      headers: {"Content-Type": "text/plain"},
+      body: this.props.name
+    })
+    .then(res => res.json())
+    .then(postCount => this.setState(postCount));
+    
+    fetch("/profile/posts",{
+      method: "POST",
+      headers: {"Content-Type": "text/plain"},
+      body: this.props.name
+    })
       .then(res => res.json())
-      .then(followee => {this.setState(followee); console.log(this.state)});
-    // fetch("/profile/post")
-    //   .then(res => res.json())
-    //   .then(postCount => this.setState(postCount));
-
-    // fetch("/profile/posts")
-    //   .then(res => res.json())
-    //   .then(posts => this.setState(posts));
+      .then(posts => this.setState(posts));
   }
 
   render() {
