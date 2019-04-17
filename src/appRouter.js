@@ -9,7 +9,7 @@ function AppRouter() {
   return (
     <Router>
       <div className="container">
-        <Route path={/\/user/} render={() => {console.log('1234456');<UserProfile name={name} />} }/>
+        <Route path={/\/user/} render={() => {console.log('1234456');return <UserProfile name={name} />} }/>
         <Route path="/" exact component={Search} />
       </div>
     </Router>
